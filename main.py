@@ -28,7 +28,7 @@ class storer():
         self.pos1 = [0, 0]
         self.pos2set = False
         self.pos2 = [0, 0]
-        self.save = "StrangePaint"
+        self.save = "drawing"
         
     # Brush functions
     def drawline(self, color, point_one, point_two, size):
@@ -47,9 +47,9 @@ class storer():
         else:
             pygame.draw.rect(drawspace, color, (point_one[0]-offset[0], point_one[1]-offset[1], point_two[0]-point_one[0], point_two[1]-point_one[1]), size)
 
-mem_top = pygame.surface.Surface([640, 480])
-mem_middle = pygame.surface.Surface([640, 480])
-mem_bottom = pygame.surface.Surface([640, 480])
+mem_top = pygame.surface.Surface([640, 380])
+mem_middle = pygame.surface.Surface([640, 380])
+mem_bottom = pygame.surface.Surface([640, 380])
         
 store = storer([]) # Create new variable storing object
 
@@ -97,14 +97,14 @@ light = [240, 240, 240]
 # Initializes pygame and display
 pygame.init()
 
-screen = pygame.display.set_mode((800, 500), 0, 32)
+screen = pygame.display.set_mode((800, 400), 0, 32)
 screen.fill(bgcolor)
 pygame.display.set_caption("Strange.Paint >-O-<")
 
-border = pygame.surface.Surface([644, 484])
+border = pygame.surface.Surface([644, 384])
 border.fill(dark)
 
-drawspace = pygame.surface.Surface([640, 480])
+drawspace = pygame.surface.Surface([640, 380])
 drawspace.fill(light)
 
 mem_top.blit(drawspace, [0,0])
@@ -218,29 +218,29 @@ while 1:
                     store.save = save
                 if pos[0] > boxx and pos[0] < boxx+box_w:
                     if pos[1] > fgy and pos[1] < fgy+box_h:
-                        r_input = InputBox.ask(screen, "r", boxx, fgy, box_w, box_h, 0, initial="0")
+                        r_input = InputBox.ask(screen, "r", boxx, fgy, box_w, box_h)
                         store.color[0] = int(r_input)
                     if pos[1] > fgy+boxy and pos[1] < fgy+boxy+box_h:
-                        g_input = InputBox.ask(screen, "g", boxx, fgy+boxy, box_w, box_h, 0, initial="0")
+                        g_input = InputBox.ask(screen, "g", boxx, fgy+boxy, box_w, box_h)
                         store.color[1] = int(g_input)
                     if pos[1] > fgy+boxy*2 and pos[1] < fgy+boxy*2+box_h:
-                        b_input = InputBox.ask(screen, "b", boxx, fgy+boxy*2, box_w, box_h, 0, initial="0")
+                        b_input = InputBox.ask(screen, "b", boxx, fgy+boxy*2, box_w, box_h)
                         store.color[2] = int(b_input)
                 if pos[0] > boxx2 and pos[0] < boxx2+box_w:
                     if pos[1] > bgy and pos[1] < bgy+box_h:
-                        r_input = InputBox.ask(screen, "r", boxx2, bgy, box_w, box_h, 0, initial="0")
+                        r_input = InputBox.ask(screen, "r", boxx2, bgy, box_w, box_h)
                         store.bgcolor[0] = int(r_input)
                     if pos[1] > bgy+boxy and pos[1] < bgy+boxy+box_h:
-                        g_input = InputBox.ask(screen, "g", boxx2, bgy+boxy, box_w, box_h, 0, initial="0")
+                        g_input = InputBox.ask(screen, "g", boxx2, bgy+boxy, box_w, box_h)
                         store.bgcolor[1] = int(g_input)
                     if pos[1] > bgy+boxy*2 and pos[1] < bgy+boxy*2+box_h:
-                        b_input = InputBox.ask(screen, "b", boxx2, bgy+boxy*2, box_w, box_h, 0, initial="0")
+                        b_input = InputBox.ask(screen, "b", boxx2, bgy+boxy*2, box_w, box_h)
                         store.bgcolor[2] = int(b_input)
                 if pos[0] > bsx and pos[0] < bsx+bs_w and pos[1] > bsy and pos[1] < bsy+bs_h:
-                    new_size = InputBox.ask(screen, "brush size", bsx, bsy, bs_w, bs_h, 0, initial="0")
+                    new_size = InputBox.ask(screen, "brush size", bsx, bsy, bs_w, bs_h)
                     store.size = int(new_size)
                 if pos[0] > bsx and pos[0] < bsx+bs_w and pos[1] > bsy+e and pos[1] < bsy+bs_h+e:
-                    new_size = InputBox.ask(screen, "eraser size", bsx, bsy+e, bs_w, bs_h, 0, initial="0")
+                    new_size = InputBox.ask(screen, "eraser size", bsx, bsy+e, bs_w, bs_h)
                     store.esize = int(new_size)
                 if pos[0] > penx and pos[0] < penx+pen_w and pos[1] > peny and pos[1] < peny+box_h:
                     store.pen = True
